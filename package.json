@@ -1,8 +1,11 @@
 {
-  "name": "pipeline-test-node",
+  "name": "pipeline-test-karma",
   "version": "0.1.0",
   "description": "Description 2",
-  "author": "pbarry@kenzan.com",
+  "author": {
+    "name": "Paul Barry",
+    "email": "pbarry@kenzan.com"
+  },
   "main": "src/index.js",
   "keywords": [
     ""
@@ -11,5 +14,24 @@
   "scripts": {
     "test": "npm test"
   },
-  "license": "Apache"
+  "license": "Apache 2",
+  "devDependencies": {
+    "babel-preset-es2015": "6.22.0",
+    "dirty-chai": "1.2.2",
+    "gulp": "3.9.1",
+    "gulp-task-listing": "1.0.1",
+    "karma": "1.4.1",
+    "karma-babel-preprocessor": "6.0.1",
+    "karma-chai": "0.1.0",
+    "karma-dirty-chai": "1.0.2",
+    "karma-mocha": "1.3.0",
+    "karma-phantomjs-launcher": "1.0.2",
+    "karma-sinon": "1.0.5",
+    "karma-sinon-chai": "1.2.4",
+    "mocha": "3.2.0",
+    "pipeline-test-node": "1.1.1",
+    "pipeline-validate-js": "https://github.com/kenzanlabs/pipeline-validate-js#92351e49b94219ba6a38ddc13cd87adf59ecc27a",
+    "sinon": "1.17.7",
+    "sinon-chai": "2.8.0"
+  }
 }
