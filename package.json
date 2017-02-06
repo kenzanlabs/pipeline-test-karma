@@ -1,18 +1,29 @@
 {
   "name": "pipeline-test-karma",
   "version": "0.1.0",
-  "description": "Description 2",
+  "description": "Pipeline to run tests in real browsers using Karma",
   "author": {
     "name": "Paul Barry",
     "email": "pbarry@kenzan.com"
   },
   "main": "src/index.js",
   "keywords": [
-    ""
+    "Gulp",
+    "karma",
+    "Keystone",
+    "Pipeline"
   ],
-  "repository": "https://github.com/kenzanlabs/pipeline-test-karma",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kenzanlabs/pipeline-test-karma"
+  },
+  "engines": {
+    "node": ">=4.0.0",
+    "npm": ">=2.14.0"
+  },
   "scripts": {
-    "test": "npm test"
+    "test": "./node_modules/.bin/gulp test",
+    "build": "./node_modules/.bin/gulp build"
   },
   "license": "Apache 2",
   "devDependencies": {
