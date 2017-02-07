@@ -18,13 +18,38 @@ _jenkins_: `https://kenzan.ci.cloudbees.com/job/CI-pipelines-test-karma/`
 `npm install pipeline-test-karma`
 
 ## Usage
-// @TODO 
+
+### Test-Driven Development (TDD)
+The `.tdd()` method is expected to be used during development and will start a Karma server with auto-watch enabled, which will restart the test suite on file changes.
+
+```javascript
+const testKarmaPipeline = require('pipeline-test-karma');
+
+gulp.task('test:tdd', () => {
+  gulp.src([/* array of files to test */])
+    .pipe(testKarmaPipeline.tdd());
+});
+
+```
+
+### Continuous Integration (CI)
+The `.ci()` method is expected to be used during CI builds and will only run a single time. 
+
+```javascript
+const testKarmaPipeline = require('pipeline-test-karma');
+
+gulp.task('test:ci', () => {
+  gulp.src([/* array of files to test */])
+    .pipe(testKarmaPipeline.ci());
+});
+
+```
 
 ## Options
 // @TODO
 
 ## Results
-// @TODO
+This pipeline will start a Karma server, run a collection of test suites, and exit according to Karma's lifecycle. 
 
 ## LICENSE
 
