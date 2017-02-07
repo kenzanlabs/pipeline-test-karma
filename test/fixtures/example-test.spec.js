@@ -1,8 +1,8 @@
 'use strict';
 
-describe('Fixture', function () {
+describe('Fixture', () => {
 
-  it('should pass', function () {
+  it('should pass', () => {
     expect(true).to.equal(true);
   });
 
