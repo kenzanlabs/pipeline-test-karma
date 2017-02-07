@@ -2,11 +2,17 @@
 
 const chai = require('chai');
 const dirtyChai = require('dirty-chai');
+const sinon = require('sinon');
+const sinonChai = require('sinon-chai');
 const expect = chai.expect;
 const isStream = require('isstream');
+const vfs = require('vinyl-fs');
+const path = require('path');
+const karma = require('karma');
 
 const testPipeline = require('../src/index');
 
+chai.use(sinonChai);
 chai.use(dirtyChai);
 
 describe('pipeline-test-node', () => {
@@ -21,6 +27,23 @@ describe('pipeline-test-node', () => {
     it('should return a stream object', function () {
       expect(testPipeline.tdd()).to.be.an('object');
       expect(isStream(testPipeline.tdd())).to.be.true();
+    });
+
+    describe('Basic Usage', () => {
+
+      it('should ....', (done) => {
+        const spy = sinon.spy(karma, 'Server');
+
+        vfs.src([path.resolve(process.cwd(), './test/fixtures/', '*.spec.js')])
+          .pipe(testPipeline.tdd())
+          .on('finish', function () {
+            expect(spy).to.have.been.called();
+
+            done();
+          });
+
+      });
+
     });
 
   });
