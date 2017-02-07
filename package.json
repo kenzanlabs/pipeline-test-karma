@@ -36,6 +36,7 @@
     "dirty-chai": "1.2.2",
     "gulp": "3.9.1",
     "gulp-task-listing": "1.0.1",
+    "isstream": "0.1.2",
     "karma": "1.4.1",
     "karma-babel-preprocessor": "6.0.1",
     "karma-chai": "0.1.0",
@@ -49,5 +50,8 @@
     "pipeline-validate-js": "https://github.com/kenzanlabs/pipeline-validate-js#92351e49b94219ba6a38ddc13cd87adf59ecc27a",
     "sinon": "1.17.7",
     "sinon-chai": "2.8.0"
+  },
+  "dependencies": {
+    "through2": "2.0.3"
   }
 }
