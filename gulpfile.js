@@ -43,10 +43,16 @@ gulp.task('test', ['lint'], () => {
     .pipe(testPipeline.test());
 });
 
-gulp.task('test:fixtures:tdd', function () {
+gulp.task('test:fixtures:tdd', () => {
   // this is to demo the internal workings of this pipeline
   return gulp.src('./test/fixtures/*.spec.js')
     .pipe(karmaTestPipeline.tdd());
+});
+
+gulp.task('test:fixtures:ci', () => {
+  // this is to demo the internal workings of this pipeline
+  return gulp.src('./test/fixtures/*.spec.js')
+    .pipe(karmaTestPipeline.ci());
 });
 
 gulp.task('build', ['test']);
