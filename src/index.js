@@ -4,50 +4,47 @@ const through2 = require('through2');
 const karma = require('karma');
 const path = require('path');
 
+const streamFiles = [];
+
+let serverOptions = {
+  configFile: path.resolve(process.cwd(), 'karma.conf.js')
+};
+
 module.exports = {
 
   tdd: () => {
 
-    const tddFiles = [];
-
-    return through2
-      .obj((file, encoding, next) => {
-        tddFiles.push(file.path);
-
-        next();
-      })
+    return pipelineFactory()
       .on('finish', () => {
 
-        new karma.Server({
-          configFile: path.resolve(process.cwd(), 'karma.conf.js'),
-          files: tddFiles,
-          autoWatch: true,
-          singleRun: false
-        }).start();
+        serverOptions.files = streamFiles;
+        serverOptions.autoWatch = true;
+        serverOptions.singleRun = false;
 
+        new karma.Server(serverOptions).start();
       });
   },
 
   ci: () => {
 
-    const ciFiles = [];
-
-    return through2
-      .obj((file, encoding, next) => {
-        ciFiles.push(file.path);
-
-        next();
-      })
+    return pipelineFactory()
       .on('finish', () => {
 
-        new karma.Server({
-          configFile: path.resolve(process.cwd(), 'karma.conf.js'),
-          files: ciFiles,
-          autoWatch: false,
-          singleRun: true
-        }).start();
+        serverOptions.files = streamFiles;
+        serverOptions.autoWatch = false;
+        serverOptions.singleRun = true;
+
+        new karma.Server(serverOptions).start();
 
       });
   }
 
 };
+
+function pipelineFactory () {
+  return through2.obj((file, encoding, next) => {
+    streamFiles.push(file.path);
+
+    next();
+  });
+}
