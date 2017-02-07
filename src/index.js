@@ -20,7 +20,9 @@ module.exports = {
 
         new karma.Server({
           configFile: path.resolve(process.cwd(), 'karma.conf.js'),
-          files: tddFiles
+          files: tddFiles,
+          autoWatch: true,
+          singleRun: false
         }).start();
 
       });

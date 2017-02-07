@@ -31,7 +31,7 @@ describe('pipeline-test-node', () => {
 
     describe('Basic Usage', () => {
 
-      it('should ....', (done) => {
+      it('should utilize Karma to start a testing server', (done) => {
         const spy = sinon.spy(karma, 'Server');
 
         vfs.src([path.resolve(process.cwd(), './test/fixtures/', '*.spec.js')])
@@ -39,9 +39,39 @@ describe('pipeline-test-node', () => {
           .on('finish', function () {
             expect(spy).to.have.been.called();
 
+            karma.Server.restore();
+
             done();
           });
 
+      });
+
+      it('should start the Karma server with autoWatch enabled', (done) => {
+        const spy = sinon.spy(karma, 'Server');
+
+        vfs.src([path.resolve(process.cwd(), './test/fixtures/', '*.spec.js')])
+          .pipe(testPipeline.tdd())
+          .on('finish', function () {
+            expect(spy.getCall(0).args[0].autoWatch).to.be.true();
+
+            karma.Server.restore();
+
+            done();
+          });
+      });
+
+      it('should start the Karma server with singleRun disabled', (done) => {
+        const spy = sinon.spy(karma, 'Server');
+
+        vfs.src([path.resolve(process.cwd(), './test/fixtures/', '*.spec.js')])
+          .pipe(testPipeline.tdd())
+          .on('finish', function () {
+            expect(spy.getCall(0).args[0].singleRun).to.be.false();
+
+            karma.Server.restore();
+
+            done();
+          });
       });
 
     });
