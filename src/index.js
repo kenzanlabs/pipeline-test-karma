@@ -16,7 +16,7 @@ module.exports = {
 
         next();
       })
-      .on('finish', function () {
+      .on('finish', () => {
 
         new karma.Server({
           configFile: path.resolve(process.cwd(), 'karma.conf.js'),
@@ -29,7 +29,25 @@ module.exports = {
   },
 
   ci: () => {
-    return through2.obj();
+
+    const ciFiles = [];
+
+    return through2
+      .obj((file, encoding, next) => {
+        ciFiles.push(file.path);
+
+        next();
+      })
+      .on('finish', () => {
+
+        new karma.Server({
+          configFile: path.resolve(process.cwd(), 'karma.conf.js'),
+          files: ciFiles,
+          autoWatch: false,
+          singleRun: true
+        }).start();
+
+      });
   }
 
 };
