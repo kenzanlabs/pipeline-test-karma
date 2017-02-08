@@ -1,5 +1,15 @@
 # pipeline-test-karma
 
+[![GitHub release](https://img.shields.io/github/release/kenzanlabs/pipeline-test-karma.svg)](https://github.com/kenzanlabs/pipeline-test-karma/releases)
+[![npm](https://img.shields.io/npm/v/pipeline-test-karma.svg)](https://www.npmjs.com/package/pipeline-test-karma)
+[![Jenkins](https://img.shields.io/jenkins/s/https/kenzan.ci.cloudbees.com/job/CI-pipeline-test-karma.svg)](https://kenzan.ci.cloudbees.com/job/CI-pipeline-test-karma/)
+[![Jenkins tests](https://img.shields.io/jenkins/t/https/kenzan.ci.cloudbees.com/job/CI-pipeline-test-karma.svg)](https://kenzan.ci.cloudbees.com/job/CI-pipeline-test-karma/lastCompletedBuild/testReport/)
+[![Jenkins coverage](https://img.shields.io/jenkins/c/https/kenzan.ci.cloudbees.com/job/CI-pipeline-test-karma.svg)](https://kenzan.ci.cloudbees.com/job/CI-pipeline-test-karma/cobertura)
+[![npm](https://img.shields.io/npm/dt/pipeline-test-karma.svg)](https://www.npmjs.com/package/pipeline-test-karma)
+[![GitHub issues](https://img.shields.io/github/issues-raw/kenzanlabs/pipeline-test-karma.svg)](https://github.com/kenzanlabs/pipeline-test-karma/issues)
+[![GitHub issues](https://img.shields.io/github/issues-pr-raw/kenzanlabs/pipeline-test-karma.svg)](https://github.com/kenzanlabs/pipeline-test-karma/pulls)
+[![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://raw.githubusercontent.com/kenzanlabs/pipeline-test-karma/master/LICENSE.md)
+
 ## Information
 
 | Package       | Description   | Version|
