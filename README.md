@@ -10,21 +10,46 @@
 
 Gulp Pipeline that uses Karma to run tests.
 
-_repo_: `ssh://git@github.com:kenzanmedia/pipeline-test-karma.git`
+This is a Gulp pipeline that allows a team to run unit test with Karma within their project. As part of the Keystone project for Kenzan, this pipeline is opinionated to promote best practices as favored by the organization. It defines a module that contains a collection of methods that allow for a pre-packaged feature set, with the ability to be customized to fit any project need.
 
-_jenkins_: `https://kenzan.ci.cloudbees.com/job/CI-pipelines-test-karma/`
+A fixture has been provided in `test/fixtures/` of a generic unit test, used to validate proper pipeline usage. As changes are presented to the default configuration, the properties will be reflected in this file as well, for easy visualization of property set changes.
 
 ## Install
 `npm install pipeline-test-karma`
 
 ## Usage
-// @TODO 
+
+### Test-Driven Development (TDD)
+The `.tdd()` method is expected to be used during development and will start a Karma server with auto-watch enabled, which will restart the test suite on file changes.
+
+```javascript
+const testKarmaPipeline = require('pipeline-test-karma');
+
+gulp.task('test:tdd', () => {
+  gulp.src([/* array of files to test */])
+    .pipe(testKarmaPipeline.tdd());
+});
+
+```
+
+### Continuous Integration (CI)
+The `.ci()` method is expected to be used during CI builds and will only run a single time. 
+
+```javascript
+const testKarmaPipeline = require('pipeline-test-karma');
+
+gulp.task('test:ci', () => {
+  gulp.src([/* array of files to test */])
+    .pipe(testKarmaPipeline.ci());
+});
+
+```
 
 ## Options
 // @TODO
 
 ## Results
-// @TODO
+This pipeline will start a Karma server, run a collection of test suites, and exit according to Karma's lifecycle. 
 
 ## LICENSE
 
